@@ -12,6 +12,18 @@ kitchen_menu = {
 }
 orders = {}
 
+def get_menu(menu):
+    print("Menu:")
+    for id, info in kitchen_menu.items():
+        print(f"{id}. {info['name']} - {info['price']} so'm")
+
+def get_orders(order_list):
+    if orders:
+        for id, info in orders.items():
+            print(f"{id}. {info['name']} x{info['count']} - {info['total']} so'm")
+    else:
+        print("No orders yet.")
+
 while True:
     print("Welcome to our Kitchen!")
     role = int(input(f"""Who are you? Please select👇:
@@ -33,9 +45,9 @@ while True:
     """)
 
             if firstSelectClient == "1":
-                print("Menu:")
-                for id, info in kitchen_menu.items():
-                    print(f"{id}. {info['name']} - {info['price']} so'm")
+                get_menu(kitchen_menu)
+                # for id, info in kitchen_menu.items():
+                #     print(f"{id}. {info['name']} - {info['price']} so'm")
 
                 foodId = input("Which food do you want? Enter id: ")
 
@@ -60,16 +72,17 @@ while True:
 
             elif firstSelectClient == "2":
                 print("Your orders:")
-                if orders:
-                    for id, info in orders.items():
-                        print(f"{id}. {info['name']} x{info['count']} - {info['total']} so'm")
-                else:
-                    print("No orders yet.")
+                get_orders(orders)
+                # if orders:
+                #     for id, info in orders.items():
+                #         print(f"{id}. {info['name']} x{info['count']} - {info['total']} so'm")
+                # else:
+                #     print("No orders yet.")
 
             elif firstSelectClient == "3":
-                print("Menu:")
-                for id, info in kitchen_menu.items():
-                    print(f"{id}. {info['name']} - {info['price']} so'm")
+                get_menu(kitchen_menu)
+                # for id, info in kitchen_menu.items():
+                #     print(f"{id}. {info['name']} - {info['price']} so'm")
 
             elif firstSelectClient == "4":
                 break
@@ -80,6 +93,23 @@ while True:
     ## Waiter
     if role == 2:
         print("Whats up man!")
+        while True:
+            waiterRequest = input("""What you want to do?
+            1. Read orders
+            2. Submit orders
+            3. Back to main menu
+            >>> """)
+            if waiterRequest == "1":
+                get_orders(orders)
+            elif waiterRequest == "2":
+                print("Submitted✅")
+            elif waiterRequest == "3":
+                break
+            else:
+                print("Invalid input, please enter between 1-3")
+            
+
+
 
     ## Manager
     if role == 3:
@@ -88,5 +118,7 @@ while True:
     ## Cooker
     if role == 4:
         print("How is it going man?")
+        while True:
+            cookerRequest = int(input())
     if role == 5:
         break
