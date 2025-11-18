@@ -119,6 +119,20 @@ while True:
     if role == 4:
         print("How is it going man?")
         while True:
-            cookerRequest = int(input())
+            cookerRequest = input("""What do you want? 
+            1. See Orders
+            2. See Menu
+            3. Back to main menu
+            >>>""")
+
+            if cookerRequest == "1":
+                get_orders(orders)
+            elif cookerRequest == "2":
+                get_menu(kitchen_menu)
+            elif cookerRequest == "3":
+                break
+            else:
+                print("Invalid input, please enter between 1-3")
+
     if role == 5:
         break
