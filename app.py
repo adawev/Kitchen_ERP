@@ -21,12 +21,27 @@ while True:
     4.Cooker
     5.Exit
 """))
+    ## Client
     if role == 1:
         print("Welcome dear client!")
+        firstSelectClient = int(input(f"""What do you want? Please select👇:
+            1.Order food
+            2.My orders
+            3.Menu
+        """))
+
+
+
+
+    ## Waiter
     if role == 2:
         print("Whats up man!")
+
+    ## Manager
     if role == 3:
         print("Welcome dear manager!")
+
+    ## Cooker
     if role == 4:
         print("How is it going man?")
     if role == 5:
