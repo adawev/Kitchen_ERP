@@ -12,3 +12,22 @@ kitchen_menu = {
 }
 
 
+while True:
+    print("Welcome to our Kitchen!")
+    role = int(input(f"""Who are you? Please select👇:
+    1.Client
+    2.Waiter
+    3.Manager
+    4.Cooker
+    5.Exit
+"""))
+    if role == 1:
+        print("Welcome dear client!")
+    if role == 2:
+        print("Whats up man!")
+    if role == 3:
+        print("Welcome dear manager!")
+    if role == 4:
+        print("How is it going man?")
+    if role == 5:
+        break
