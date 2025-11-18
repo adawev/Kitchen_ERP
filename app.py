@@ -52,7 +52,7 @@ while True:
                             "total": food_info["price"] * count
                         }
                         print(
-                            f"✅ Your order has been placed: {food_info['name']} x{count} - {food_info['price'] * count} so'm")
+                            f"Your order has been placed: {food_info['name']} x{count} - {food_info['price'] * count} so'm")
                     else:
                         print("Quantity must be a positive number.")
                 else:
@@ -72,7 +72,6 @@ while True:
                     print(f"{id}. {info['name']} - {info['price']} so'm")
 
             elif firstSelectClient == "4":
-                print("Returning to main menu...")
                 break
 
             else:
