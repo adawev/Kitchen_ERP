@@ -20,7 +20,7 @@ def get_menu(menu):
 def get_orders(order_list):
     if orders:
         for id, info in orders.items():
-            print(f"{id}. {info['name']} x{info['count']} - {info['total']} so'm")
+            print(f"{id}. Status: {info['status']} \n {info['name']} x{info['count']} - {info['total']} so'm")
     else:
         print("No orders yet.")
 
@@ -61,7 +61,8 @@ while True:
                             "name": food_info["name"],
                             "price": food_info["price"],
                             "count": count,
-                            "total": food_info["price"] * count
+                            "total": food_info["price"] * count,
+                            "status": "In proccess"
                         }
                         print(
                             f"Your order has been placed: {food_info['name']} x{count} - {food_info['price'] * count} so'm")
@@ -102,7 +103,14 @@ while True:
             if waiterRequest == "1":
                 get_orders(orders)
             elif waiterRequest == "2":
-                print("Submitted✅")
+                get_orders(orders)
+                selectedOrder = int(input("Select order to submit: "))
+                if selectedOrder in orders:
+                    orders[selectedOrder]["status"] = "Completed"
+                    print("Your order has been submitted!")
+                else:
+                    print("Please type correct order.")
+
             elif waiterRequest == "3":
                 break
             else:
