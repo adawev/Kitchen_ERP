@@ -10,7 +10,20 @@ kitchen_menu = {
     "9": {"name": "Beshbarmoq", "price": 26000},
     "10": {"name": "Tovuq go'shti", "price": 30000}
 }
+
+staff = [
+    { "name": "Diyor", "role": "Chef" },
+    { "name": "Bexzod", "role": "Manager" },
+    { "name": "Rayxona", "role": "Waitress" },
+    { "name": "Sunnatjon", "role": "Waiter" },
+]
 orders = {}
+
+# Manager rules
+# Checks staff - cook, waiter
+# calculates money, withdraws money from balance
+# complaints from user side (Insurance provided)
+
 complaints = {}
 balance = 0
 
@@ -148,6 +161,33 @@ while True:
     ## Manager
     if role == 3:
         print("Welcome dear manager!")
+        while True:
+            print("Please select the section you want")
+            print("1. Check Staff")
+            print("2. Budget")
+            choice = int(input())
+            if choice == 1:
+                for i in staff:
+                    print(f"{i['name']} - {i['role']}")
+
+            if choice == 2:
+                while True:
+                    print("Please select the section you want")
+                    print("1. Check Balance")
+                    print("2. Withdraw Money")
+                    choice = int(input())
+                    if choice == 1:
+                        print(f"Your balance: {balance} sum")
+                    if choice == 2:
+                        money = input("Enter the amount of money you want to withdraw: ")
+                        if (balance - money >= 0) and (money <= 0):
+                            balance -= money
+                            print("Withdraw done successfully!")
+                        elif money <= 0:
+                            print("Please valid amount of money.")
+                        else:
+                            print("Balance has no enough money to withdraw money.")
+
 
     ## Cooker
     if role == 4:
