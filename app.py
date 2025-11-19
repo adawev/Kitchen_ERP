@@ -60,7 +60,7 @@ while True:
     3.Manager
     4.Cooker
     5.Exit
-"""))
+>>> """))
     ## Client
     if role == 1:
         print("Welcome dear client!")
@@ -71,7 +71,7 @@ while True:
     3. Menu
     4. Complaint
     5. Back to main menu
-    """)
+    >>> """)
 
             if firstSelectClient == "1":
                 order_items = []
@@ -130,7 +130,7 @@ while True:
                 get_menu(kitchen_menu)
             elif firstSelectClient == "4":
                 complaint = input("Write your complaint: ")
-                complaints[len(complaints)] = complaint
+                complaints[len(complaints)+1] = complaint
             elif firstSelectClient == "5":
                 break
 
@@ -166,25 +166,37 @@ while True:
     if role == 3:
         print("Welcome dear manager!")
         while True:
-            print("Please select the section you want")
-            print("1. Check Staff")
-            print("2. Budget")
-            print("3. Complaints")
-            print("4. Back to main menu")
-            choice = int(input())
-            if choice == 1:
+            choice = input("""Please select the section you want
+            1. Check Staff
+            2. Budget
+            3. Complaints
+            4. Back to main menu
+            >>> """)
+            # print("Please select the section you want")
+            # print("1. Check Staff")
+            # print("2. Budget")
+            # print("3. Complaints")
+            # print("4. Back to main menu")
+            # choice = int(input())
+            if choice == "1":
                 for i in staff:
                     print(f"{i['name']} - {i['role']}")
 
-            if choice == 2:
+            if choice == "2":
                 while True:
-                    print("Please select the section you want")
-                    print("1. Check Balance")
-                    print("2. Withdraw Money")
-                    choice = int(input())
-                    if choice == 1:
+                    choice = input("""Please select the section you want
+                    1. Check Balance
+                    2. Withdraw Money
+                    0. Back to main menu
+                    >>> """)
+                    
+                    # print("Please select the section you want")
+                    # print("1. Check Balance")
+                    # print("2. Withdraw Money")
+                    # choice = int(input())
+                    if choice == "1":
                         print(f"Your balance: {balance} sum")
-                    if choice == 2:
+                    if choice == "2":
                         money = int(input(f"Enter the amount of money you want to withdraw, Balance: {balance}: "))
                         if (balance - money >= 0) and (money <= 0):
                             balance -= money
@@ -193,10 +205,12 @@ while True:
                             print("Please valid amount of money.")
                         else:
                             print("Balance has no enough money to withdraw money.")
+                    if choice == "0":
+                        break
 
-            if choice == 3:
+            if choice == "3":
                 get_complaints()
-            if choice == 4:
+            if choice == "4":
                 break
 
     ## Cooker
