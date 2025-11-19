@@ -27,6 +27,10 @@ orders = {}
 complaints = {}
 balance = 0
 
+def get_complaints():
+    print("Complaints:")
+    for i , n in complaints.items():
+        print(f"{i}. {n}")
 
 def get_menu(menu):
     print("Menu:")
@@ -126,7 +130,7 @@ while True:
                 get_menu(kitchen_menu)
             elif firstSelectClient == "4":
                 complaint = input("Write your complaint: ")
-                complaints[len(complaints)] = {complaint}
+                complaints[len(complaints)] = complaint
             elif firstSelectClient == "5":
                 break
 
@@ -165,6 +169,7 @@ while True:
             print("Please select the section you want")
             print("1. Check Staff")
             print("2. Budget")
+            print("3. Complaints")
             choice = int(input())
             if choice == 1:
                 for i in staff:
@@ -188,6 +193,8 @@ while True:
                         else:
                             print("Balance has no enough money to withdraw money.")
 
+            if choice == 3:
+                get_complaints()
 
     ## Cooker
     if role == 4:
