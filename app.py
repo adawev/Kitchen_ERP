@@ -170,6 +170,7 @@ while True:
             print("1. Check Staff")
             print("2. Budget")
             print("3. Complaints")
+            print("4. Back to main menu")
             choice = int(input())
             if choice == 1:
                 for i in staff:
@@ -184,7 +185,7 @@ while True:
                     if choice == 1:
                         print(f"Your balance: {balance} sum")
                     if choice == 2:
-                        money = input("Enter the amount of money you want to withdraw: ")
+                        money = int(input(f"Enter the amount of money you want to withdraw, Balance: {balance}: "))
                         if (balance - money >= 0) and (money <= 0):
                             balance -= money
                             print("Withdraw done successfully!")
@@ -195,6 +196,8 @@ while True:
 
             if choice == 3:
                 get_complaints()
+            if choice == 4:
+                break
 
     ## Cooker
     if role == 4:
