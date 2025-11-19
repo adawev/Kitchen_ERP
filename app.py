@@ -13,17 +13,27 @@ kitchen_menu = {
 orders = {}
 complaints = {}
 balance = 0
+
+
 def get_menu(menu):
     print("Menu:")
     for id, info in kitchen_menu.items():
         print(f"{id}. {info['name']} - {info['price']} so'm")
 
+
 def get_orders(order_list):
     if orders:
         for id, info in orders.items():
-            print(f"{id}. Status: {info['status']} \n {info['name']} x{info['count']} - {info['total']} so'm")
+            print(f"\nOrder ID: {id}")
+            print(f"Status: {info['status']}")
+            print(f"Payment: {info['payment']}")
+            print("Items:")
+            for i in info['items']:
+                print(f"- {i['name']} x{i['count']} = {i['total']} so'm")
+            print(f"Total: {info['total']} so'm")
     else:
         print("No orders yet.")
+
 
 while True:
     print("Welcome to our Kitchen!")
@@ -47,30 +57,54 @@ while True:
     """)
 
             if firstSelectClient == "1":
-                get_menu(kitchen_menu)
-                foodId = input("Which food do you want? Enter id: ")
+                order_items = []
+                order_total = 0
 
-                if foodId in kitchen_menu:
-                    count = input("How many do you want? ")
-                    if count.isdigit() and int(count) > 0:
-                        count = int(count)
-                        orderId = len(orders) + 1
-                        food_info = kitchen_menu[foodId]
-                        orders[orderId] = {
-                            "name": food_info["name"],
-                            "price": food_info["price"],
-                            "count": count,
-                            "total": food_info["price"] * count,
-                            "status": "In proccess"
-                        }
-                        balance += (food_info["price"] * count)
-                        print(
-                            f"Your order has been placed: {food_info['name']} x{count} - {food_info['price'] * count} so'm")
+                while True:
+                    get_menu(kitchen_menu)
+                    foodId = input("Enter food ID (or X to finish): ")
+
+                    if foodId.lower() == "x":
+                        break
+
+                    if foodId in kitchen_menu:
+                        count = input("How many? ")
+                        if count.isdigit() and int(count) > 0:
+                            count = int(count)
+                            food = kitchen_menu[foodId]
+                            total = food["price"] * count
+                            order_total += total
+
+                            order_items.append({
+                                "name": food["name"],
+                                "price": food["price"],
+                                "count": count,
+                                "total": total
+                            })
+                        else:
+                            print("Quantity must be positive.")
                     else:
-                        print("Quantity must be a positive number.")
-                else:
-                    print("Invalid food ID!")
+                        print("Invalid food ID!")
 
+                if len(order_items) == 0:
+                    print("Order cancelled.")
+                    continue
+
+                print(f"Total order price: {order_total} so'm")
+
+                payment = input("Payment method (naqd/karta): ")
+
+                orderId = len(orders) + 1
+
+                orders[orderId] = {
+                    "items": order_items,
+                    "total": order_total,
+                    "status": "In proccess",
+                    "payment": payment if payment in ["naqd", "karta"] else "naqd"
+                }
+
+                balance += order_total
+                print(f"Your order #{orderId} has been placed!")
             elif firstSelectClient == "2":
                 print("Your orders:")
                 get_orders(orders)
@@ -110,9 +144,6 @@ while True:
                 break
             else:
                 print("Invalid input, please enter between 1-3")
-            
-
-
 
     ## Manager
     if role == 3:
