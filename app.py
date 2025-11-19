@@ -63,6 +63,7 @@ while True:
                             "total": food_info["price"] * count,
                             "status": "In proccess"
                         }
+                        balance += (food_info["price"] * count)
                         print(
                             f"Your order has been placed: {food_info['name']} x{count} - {food_info['price'] * count} so'm")
                     else:
