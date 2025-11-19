@@ -11,7 +11,8 @@ kitchen_menu = {
     "10": {"name": "Tovuq go'shti", "price": 30000}
 }
 orders = {}
-
+complaints = {}
+balance = 0
 def get_menu(menu):
     print("Menu:")
     for id, info in kitchen_menu.items():
@@ -41,14 +42,12 @@ while True:
     1. Order food
     2. My orders
     3. Menu
-    4. Back to main menu
+    4. Complaint
+    5. Back to main menu
     """)
 
             if firstSelectClient == "1":
                 get_menu(kitchen_menu)
-                # for id, info in kitchen_menu.items():
-                #     print(f"{id}. {info['name']} - {info['price']} so'm")
-
                 foodId = input("Which food do you want? Enter id: ")
 
                 if foodId in kitchen_menu:
@@ -74,18 +73,13 @@ while True:
             elif firstSelectClient == "2":
                 print("Your orders:")
                 get_orders(orders)
-                # if orders:
-                #     for id, info in orders.items():
-                #         print(f"{id}. {info['name']} x{info['count']} - {info['total']} so'm")
-                # else:
-                #     print("No orders yet.")
 
             elif firstSelectClient == "3":
                 get_menu(kitchen_menu)
-                # for id, info in kitchen_menu.items():
-                #     print(f"{id}. {info['name']} - {info['price']} so'm")
-
             elif firstSelectClient == "4":
+                complaint = input("Write your complaint: ")
+                complaints[len(complaints)] = {complaint}
+            elif firstSelectClient == "5":
                 break
 
             else:
