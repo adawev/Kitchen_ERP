@@ -12,10 +12,10 @@ kitchen_menu = {
 }
 
 staff = [
-    { "name": "Diyor", "role": "Chef" },
-    { "name": "Bexzod", "role": "Manager" },
-    { "name": "Rayxona", "role": "Waitress" },
-    { "name": "Sunnatjon", "role": "Waiter" },
+    {"name": "Diyor", "role": "Chef"},
+    {"name": "Bexzod", "role": "Manager"},
+    {"name": "Rayxona", "role": "Waitress"},
+    {"name": "Sunnatjon", "role": "Waiter"},
 ]
 orders = {}
 
@@ -27,10 +27,12 @@ orders = {}
 complaints = {}
 balance = 0
 
+
 def get_complaints():
     print("Complaints:")
-    for i , n in complaints.items():
+    for i, n in complaints.items():
         print(f"{i}. {n}")
+
 
 def get_menu(menu):
     print("Menu:")
@@ -130,7 +132,7 @@ while True:
                 get_menu(kitchen_menu)
             elif firstSelectClient == "4":
                 complaint = input("Write your complaint: ")
-                complaints[len(complaints)+1] = complaint
+                complaints[len(complaints) + 1] = complaint
             elif firstSelectClient == "5":
                 break
 
@@ -166,25 +168,26 @@ while True:
     if role == 3:
         print("Welcome dear manager!")
         while True:
-            choice = input("""Please select the section you want
+            managerInput = input("""Please select the section you want
             1. Check Staff
             2. Budget
             3. Complaints
+            4. Menu
             4. Back to main menu
             >>> """)
 
-            if choice == "1":
+            if managerInput == "1":
                 for i in staff:
                     print(f"{i['name']} - {i['role']}")
 
-            if choice == "2":
+            if managerInput == "2":
                 while True:
                     choice = input("""Please select the section you want
                     1. Check Balance
                     2. Withdraw Money
                     0. Back to main menu
                     >>> """)
-                    
+
                     if choice == "1":
                         print(f"Your balance: {balance} sum")
                     if choice == "2":
@@ -199,9 +202,26 @@ while True:
                     if choice == "0":
                         break
 
-            if choice == "3":
+            if managerInput == "3":
                 get_complaints()
-            if choice == "4":
+            if managerInput == "4":
+                while True:
+                    mana2Input = input("""Please select the section you want
+                                        1. Current menu
+                                        2. Add food to menu
+                                        3. Back to main menu
+                                        >>> """)
+                    if mana2Input == "1":
+                        get_menu(kitchen_menu)
+                    elif mana2Input == "2":
+                        name = input("Enter name of food: ")
+                        price = input("Enter price of food: ")
+                    elif mana2Input == "3":
+                        break
+
+
+
+            if managerInput == "5":
                 break
 
     ## Cooker
