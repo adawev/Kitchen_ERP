@@ -18,12 +18,6 @@ staff = [
     { "name": "Sunnatjon", "role": "Waiter" },
 ]
 orders = {}
-
-# Manager rules
-# Checks staff - cook, waiter
-# calculates money, withdraws money from balance
-# complaints from user side (Insurance provided)
-
 complaints = {}
 balance = 0
 
@@ -172,12 +166,7 @@ while True:
             3. Complaints
             4. Back to main menu
             >>> """)
-            # print("Please select the section you want")
-            # print("1. Check Staff")
-            # print("2. Budget")
-            # print("3. Complaints")
-            # print("4. Back to main menu")
-            # choice = int(input())
+
             if choice == "1":
                 for i in staff:
                     print(f"{i['name']} - {i['role']}")
@@ -189,19 +178,14 @@ while True:
                     2. Withdraw Money
                     0. Back to main menu
                     >>> """)
-                    
-                    # print("Please select the section you want")
-                    # print("1. Check Balance")
-                    # print("2. Withdraw Money")
-                    # choice = int(input())
                     if choice == "1":
                         print(f"Your balance: {balance} sum")
                     if choice == "2":
                         money = int(input(f"Enter the amount of money you want to withdraw, Balance: {balance}: "))
-                        if (balance - money >= 0) and (money <= 0):
+                        if balance - money >= 0:
                             balance -= money
                             print("Withdraw done successfully!")
-                        elif money <= 0:
+                        elif money < 0:
                             print("Please valid amount of money.")
                         else:
                             print("Balance has no enough money to withdraw money.")
