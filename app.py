@@ -144,7 +144,7 @@ while True:
         print("Whats up man!")
         while True:
             waiterRequest = input("""What you want to do?
-            1. Read orders
+            1. See orders
             2. Submit orders
             3. Back to main menu
             >>> """)
