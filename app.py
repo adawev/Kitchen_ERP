@@ -172,12 +172,7 @@ while True:
             3. Complaints
             4. Back to main menu
             >>> """)
-            # print("Please select the section you want")
-            # print("1. Check Staff")
-            # print("2. Budget")
-            # print("3. Complaints")
-            # print("4. Back to main menu")
-            # choice = int(input())
+
             if choice == "1":
                 for i in staff:
                     print(f"{i['name']} - {i['role']}")
@@ -190,10 +185,6 @@ while True:
                     0. Back to main menu
                     >>> """)
                     
-                    # print("Please select the section you want")
-                    # print("1. Check Balance")
-                    # print("2. Withdraw Money")
-                    # choice = int(input())
                     if choice == "1":
                         print(f"Your balance: {balance} sum")
                     if choice == "2":
