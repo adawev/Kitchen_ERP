@@ -189,10 +189,10 @@ while True:
                         print(f"Your balance: {balance} sum")
                     if choice == "2":
                         money = int(input(f"Enter the amount of money you want to withdraw, Balance: {balance}: "))
-                        if (balance - money >= 0) and (money <= 0):
+                        if balance - money >= 0:
                             balance -= money
                             print("Withdraw done successfully!")
-                        elif money <= 0:
+                        elif money < 0:
                             print("Please valid amount of money.")
                         else:
                             print("Balance has no enough money to withdraw money.")
