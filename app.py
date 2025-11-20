@@ -173,7 +173,7 @@ while True:
             2. Budget
             3. Complaints
             4. Menu
-            4. Back to main menu
+            5. Back to main menu
             >>> """)
 
             if managerInput == "1":
@@ -216,6 +216,13 @@ while True:
                     elif mana2Input == "2":
                         name = input("Enter name of food: ")
                         price = input("Enter price of food: ")
+                        id = str(len(kitchen_menu) + 1)
+                        kitchen_menu[id]={
+                            'name': name,
+                            'price': price
+                        }
+                        print("Food added to menu successfully!")
+
                     elif mana2Input == "3":
                         break
 
